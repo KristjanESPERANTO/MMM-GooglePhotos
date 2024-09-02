@@ -2,7 +2,7 @@
 
 1. Install Module
     
-    Run the following command. For example, the Magic Mirror directory is `~/MagicMirror`.
+    Run the following command. For example, the MagicMirror directory is `~/MagicMirror`.
     ```sh
     cd ~/MagicMirror/modules
     git clone https://github.com/hermanho/MMM-GooglePhotos.git
@@ -23,7 +23,7 @@
 
 ## Upgrade
 
-  Run the following command. For example, the Magic Mirror directory is `~/MagicMirror`.
+  Run the following command. For example, the MagicMirror directory is `~/MagicMirror`.
   ```sh
   cd ~/MagicMirror/modules/MMM-GooglePhotos
   git pull
@@ -54,10 +54,10 @@ node generate_token_v2.js
 12. Copy the file `token.json` and `credentials.json` to the folder `MMM-GooglePhotos` in the remote device
 
 ### Stop token from expiring every week
-as of 2021, it appears tokens only last 1 week while in 'testing'. This led to users needing to get a new token.json every ~week to 10 days. To get your app out of testing mode, where the token will last indefinately:
+As of 2021, it appears tokens only last 1 week while in 'testing'. This led to users needing to get a new token.json every ~week to 10 days. To get your app out of testing mode, where the token will last indefinately:
 
-1. go to your google cloud console, select your magic mirror project. Then from the navigation menu(top left) -> APIs & Services -> Oath consent screen. This should get you to a site something like https://console.cloud.google.com/apis/credentials/consent?project=[PROJECT_ID] where [PROJECT_ID] is the project ID. This is where the publishing status. It looks like this:
+1. Go to your google cloud console, select your MagicMirror project. Then from the navigation menu(top left) -> APIs & Services -> Oath consent screen. This should get you to a site something like https://console.cloud.google.com/apis/credentials/consent?project=[PROJECT_ID] where [PROJECT_ID] is the project ID. This is where the publishing status. It looks like this:
 
     ![](https://raw.githubusercontent.com/eouia/MMM-GooglePhotos/master/PublishAppScreen.png)
 
-2. click Publish app and review permissions as necessary.
+2. Click Publish app and review permissions as necessary.

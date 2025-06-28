@@ -6,10 +6,6 @@ const path = require("path");
 const { mkdirp } = require("mkdirp");
 const { OAuth2Client } = require("google-auth-library");
 
-/**
- * @type {import("axios").AxiosStatic}
- */
-const Axios = require("axios");
 const moment = require("moment");
 const { error_to_string } = require("./error_to_string");
 const { ConfigFileError, AuthError } = require("./Errors");
@@ -150,19 +146,18 @@ class GPhotos {
   }
 
   async request(token, endPoint = "", method = "get", params = null, data = null) {
-    let url = endPoint;
+    let url = "https://photoslibrary.googleapis.com/v1/" + endPoint;
     try {
       let config = {
         method: method,
-        url: url,
-        baseURL: "https://photoslibrary.googleapis.com/v1/",
         headers: {
           Authorization: "Bearer " + token,
         },
       };
       if (params) config.params = params;
       if (data) config.data = data;
-      const ret = await Axios(config);
+      const response = await fetch(url, config);
+      const ret = await response.json();
       return ret;
     } catch (error) {
       this.logTrace("request fail with URL", url);
@@ -360,8 +355,8 @@ class GPhotos {
           "X-Goog-Upload-Protocol": "raw",
         },
       };
-      option.data = newFile;
-      const ret = await Axios(option);
+      option.body = newFile;
+      const ret = await fetch(url, option);
       return ret.data;
     } catch (err) {
       this.log(".upload()", err.toString());
